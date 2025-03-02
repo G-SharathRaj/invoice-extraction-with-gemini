@@ -15,7 +15,7 @@ pytesseract.pytesseract.tesseract_cmd = config.TESSERACT_PATH
 
 def extract_text_from_invoice(pdf_bytes):
     """Convert uploaded PDF invoice to text using OCR."""
-    images = convert_from_bytes(pdf_bytes, poppler_path=config.POPPLER_PATH)  # Ensure poppler path is set
+    images = convert_from_bytes(pdf_bytes)  # No need to specify poppler_path
     extracted_text = "\n".join([pytesseract.image_to_string(img) for img in images])
     return extracted_text
 
